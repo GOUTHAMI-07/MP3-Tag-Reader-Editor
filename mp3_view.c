@@ -3,22 +3,27 @@
 #include "mp3_view.h"
 #include<string.h>
 
-Status read_and_validate_view_args(char *argv[], ViewInfo *viewInfo)
+Status read_and_validate_view_args(int agrc,char *argv[], ViewInfo *viewInfo)
 {
-   if(strstr(argv[2],".mp3")!=NULL){
+    if(argc<2||argc>3)
+    {
+        printf("Invalid argument\n");
+        return e_failure;
+    }
+    if(strstr(argv[2],".mp3")!=NULL){
     char *dot=strstr(argv[2],".mp3");
     if(strlen(dot)==4){
         viewInfo->file_name=argv[2];
         return e_success;
     }
     else{
-        printf("Invalide file extension");
+        printf("Invalide file extension\n");
         return e_failure;
     }
     }
     else
     {
-        printf("Invalid file extension");
+        printf("Invalid file extension\n");
         return e_failure;
     }
 
@@ -51,7 +56,7 @@ Status view_metadata(ViewInfo *viewInfo)
         printf("header not found\n");
         return e_failure;
     }
-    fseek(viewInfo->fptr_mp3, 7 , SEEK_CUR);
+    fseek(viewInfo->fptr_mp3,7, SEEK_CUR);
 
     int count=0;
     printf("\n\t\tSONG DETAILS\n");

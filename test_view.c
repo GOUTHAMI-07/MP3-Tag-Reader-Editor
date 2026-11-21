@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "mp3_view.h"
+#include "mp3_edit.h"
 #include "types.h"
 #include <string.h>
 #include "common.h"
@@ -9,14 +10,10 @@ OperationType check_operation_type(char opt);
 int main(int argc,char *argv[])
 {
     ViewInfo viewInfo;
-    if(argc<3)
-    {
-        printf("Invalid argument\n");
-        return 1;
-    }
+    EditInfo editInfo;
     if(check_operation_type(argv[1][1])==e_view)
     {
-        if(read_and_validate_view_args(argv,&viewInfo)==e_success)
+        if(read_and_validate_view_args(argc,argv,&viewInfo)==e_success)
         {
             if(open_files(&viewInfo)==e_success)
             {
@@ -40,6 +37,18 @@ int main(int argc,char *argv[])
         else
         {
             printf("Error:Invalid arguments\n");
+        }
+    }
+    else if(check_operation_type(argv[1][1]==e_edit))
+    {
+        if(read_and_validate_edit_args(argc,argv,&editInfo)==e_success)
+        {
+            if(do_edit(&editInfo)==e_success){
+                
+            }
+
+            
+
         }
     }
     
