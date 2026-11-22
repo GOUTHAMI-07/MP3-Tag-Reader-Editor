@@ -3,7 +3,7 @@
 #include "mp3_view.h"
 #include<string.h>
 
-Status read_and_validate_view_args(int agrc,char *argv[], ViewInfo *viewInfo)
+Status read_and_validate_view_args(int argc,char *argv[], ViewInfo *viewInfo)
 {
     if(argc<2||argc>3)
     {

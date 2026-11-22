@@ -13,7 +13,7 @@ typedef struct
 
 /* Function declarations */
 
-Status read_and_validate_view_args(char *argv[], ViewInfo *viewInfo);
+Status read_and_validate_view_args(int argc,char *argv[], ViewInfo *viewInfo);
 
 Status open_files(ViewInfo *viewInfo);
 

@@ -39,17 +39,27 @@ int main(int argc,char *argv[])
             printf("Error:Invalid arguments\n");
         }
     }
-    else if(check_operation_type(argv[1][1]==e_edit))
+    else if(check_operation_type(argv[1][1])==e_edit)
     {
         if(read_and_validate_edit_args(argc,argv,&editInfo)==e_success)
         {
-            if(do_edit(&editInfo)==e_success){
-                
+            if(do_edit(&editInfo)==e_success)
+            {
+                printf("Editing successful\n");
             }
-
-            
-
+            else
+            {
+                printf("Editing failed\n");
+            }
         }
+        else
+        {
+            printf("Error:Invalid arguments\n");
+        }
+    }
+    else
+    {
+        printf("Error: Unsupported operation\n");
     }
     
 }
