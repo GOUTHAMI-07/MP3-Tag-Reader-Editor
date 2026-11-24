@@ -167,6 +167,11 @@ Status do_edit(EditInfo *editInfo)
 
 fclose(editInfo->fptr_mp3);
 fclose(fptr_temp);
+if(rename("temp.mp3",editInfo->file_name) != 0)
+{
+    printf("Rename failed\n");
+    return e_failure;
+}
 return e_success;
 
 }
